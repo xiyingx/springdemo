@@ -22,6 +22,9 @@ public class UserController {
         System.out.println("111111");
         System.out.println("111111");
         System.out.println("111111");
+        System.out.println("111111");
+        System.out.println("111111");
+        System.out.println("111111");
         LoginUser tokenLogin = userMapper.selectOne(new LoginUser(request.getHeader("token"),request.getHeader("token2")));
         return loginUser != null || tokenLogin != null;
     }
