@@ -1,0 +1,44 @@
+<!DOCTYPE html><!--如果不写/就会直接到静态文件中找index.html-->
+<html lang="ch">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<h1>this is my web</h1>
+<p id="content">1111</p>
+账号：<input type="text" id="userName"><br>
+密码：<input type="password" id="pwd">
+<button onclick="chageit()">发送</button><br>
+<input type="text" id="info"><button onclick="query()">查询</button><br>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var user1 = document.getElementById("userName");
+    var pwd1 = document.getElementById("pwd");
+    var text1 = document.getElementById("info");
+    function chageit() {
+        axios.post('/user',{
+            username:user1.value,
+            pwd:pwd1.value
+        })
+            .then(function (response) {
+                window.alert(response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    function query() {
+        axios.get('/query',{
+            params:{text:text1.value}
+        })
+            .then(function (response) {
+                window.alert(response.data.text);
+            }).catch(function (error) {
+            console.log(error);
+        });
+    }
+</script>
+</html>

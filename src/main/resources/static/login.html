@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <input type="text" id="u" name="userName"><br>
+        <input type="text" id="u1" name="pwd"><br>
+        <button onclick="login()">提交</button>
+        <p id="p1"></p>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var a = document.getElementById("u");
+    var b = document.getElementById("u1");
+    var p = document.getElementById("p1");
+    function login() {
+        axios.get('/login?userName='+a.value+'&pwd='+b.value)
+            .then(function (response) {
+                console.log(response);
+                p.innerText = response.data.name + response.data.pwd;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+</script>
+</html>
