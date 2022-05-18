@@ -17,6 +17,7 @@ public class UserController {
     @PostMapping("/login")
     public boolean login(@RequestBody LoginUser user, HttpServletResponse response, HttpServletRequest request){
         LoginUser loginUser = userMapper.selectOne(user);
+        System.out.println("111111");
         LoginUser tokenLogin = userMapper.selectOne(new LoginUser(request.getHeader("token"),request.getHeader("token2")));
         return loginUser != null || tokenLogin != null;
     }
